@@ -15,6 +15,6 @@ int countNumInArray(int array[], int dimension, int number) {
 
 void main(void)
 {
-	int array[] = { 4, 1, 7, 5, 4, 1, 4, 3, 7 }, dimension, number;
+	int array[] = { 4, 1, 7, 5, 4, 1, 4, 3, 7, 4 }, dimension, number;
 	printf("occurences: %d", countNumInArray(array,9,4));
 }
