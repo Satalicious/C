@@ -22,7 +22,7 @@ int max(int arr[], int dimension) {
 
 
 void main(void) {
-	int arr[100] = { 4, 9, 7, 5, 8, 1, 4, 2, 3, 1, 100 };
+	int arr[100] = { 4, 1, 7, 5, 8, 1, 4, 2, 3, 1, 100 };
 
-	printf("highest number is %d", max(arr,8));
+	printf("highest number is %d", max(arr,3));
 }
