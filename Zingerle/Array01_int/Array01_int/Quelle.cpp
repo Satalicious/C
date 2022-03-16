@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main()
+int main()
 {
 	int i;
 	int zahlen[10];		// Definition eines Feldes (Array) namens zahlen mit 10 Integer Werter
@@ -21,4 +21,5 @@ void main()
 
 
 	printf("%d", sum);
+	return 0;
 }
