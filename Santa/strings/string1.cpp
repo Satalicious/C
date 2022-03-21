@@ -5,7 +5,7 @@
 #include <conio.h>
 #include <ctype.h>
 
-void main()
+int main()
 
 {
 	char input_text[] = "The world is beautiful";
@@ -18,4 +18,5 @@ void main()
 		index++;
 	}
 	printf("input text is: %s", input_text);
+	return 0;
 }
