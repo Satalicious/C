@@ -112,7 +112,7 @@ int main(){
 	bool res = str_starts_with(str, substr_1);
 	if (res == true) printf("true\n");
 	else printf("false\n");
-	char substr_2[] = "This is not";
+	char substr_2[] = "This is n";
 	res = str_starts_with(str, substr_2);
 	if (res == true) printf("true\n");
 	else printf("false\n");	
