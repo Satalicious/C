@@ -161,7 +161,8 @@ printf("\n=== Checking string's suffix ===\n");
   else printf("false\n");
 
   
-  str_is_digit("213454509");  // true if string only has digits
+  str_is_digit(str);  // true if string only has digits
+  
   str_is_digit("Hello World");
   
   str_index("Hello World", "o");  // pos. of first occ. of sub in str | -1
