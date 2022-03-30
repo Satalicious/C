@@ -13,7 +13,7 @@ void print_date(Date d) {
 }
 
 int main() {
-    Date d = { .year = 1997, .month = 06, .day = 16 };
+    Date d = { 1997, 06, 16 };
     print_date(d);
     return 0;
 }
