@@ -5,6 +5,15 @@ Implement the following functions: */
 #include "stdio.h"
 #include "ctype.h"
 
+void toupper2(char *array) {
+    while (*array) {
+        if (*array == 32)
+            array++;
+        if (islower(*array))
+            *array = toupper(*array);
+            array++;
+    }
+}
 void to_upper(char* array) {
     while (*array) {
         *array = toupper(*array);
@@ -58,6 +67,11 @@ bool is_lower(char* array) {
 
 int main() {
     char phrase[] = {"Das Haus von Nikolaus"};
+
+    char *phrase_pointer = &phrase[0];
+    toupper2(phrase_pointer);
+    printf("to_upper2 conversion: %s\n",phrase_pointer);
+    
     to_upper(phrase);
     printf("to_upper conversion: %s\n",phrase);
 
