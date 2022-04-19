@@ -8,7 +8,7 @@
 */
 
 
-void main()
+int main()
 {
 	char Frage;
 	do
@@ -21,8 +21,9 @@ void main()
 
 	ausgabe(z1);
 
-	printf("\nWollen Sie den Test erneut durchführen? y / n");
+	printf("\nWollen Sie den Test erneut durchfï¿½hren? y / n");
 	Frage = getch();
 	} while (Frage == 'y');
 
+	return 0;
 }
