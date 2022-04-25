@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() {
-    int array[20] = {1,1,1,6,6,6,7,8,8,10,11,12,13,14,15,16,17,18,9,20};
+    int array[20] = {1,1,1,6,13,6,7,8,8,10,11,12,13,14,15,16,17,18,9,20};
     int cnt = 0;
     for (int i = 0; i < 20; i++) {
         if (array[i] > 9 || array[i] < 1) {
@@ -16,10 +16,9 @@ int main() {
         for (int j = 0; j < 20; j++) {
             if (i == array[j])
                 cnt+=1;
-        } if (i < 10) {
-            printf("%d: %d\n",i,cnt);
-            cnt = 0;
-        }
+        } 
+        printf("%d: %d\n",i,cnt);
+        cnt = 0;
     }
     return 0;
     }
