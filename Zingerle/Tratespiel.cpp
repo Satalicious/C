@@ -15,12 +15,14 @@ int askuser(){
 int main() {
     srand ((long)time(NULL));
     int MyNr = rand() % 20 +1;  // Zufallszahl zwischen 1-20
-    int inp = -1;
+    int inp = -1, cnt = 0;
     while (inp != MyNr) {
         inp = askuser();
         if (inp < MyNr) printf("%d ist ZU KLEIN, try again\n",inp);
         if (inp > MyNr) printf("%d ist ZU GROSS, try again\n",inp);
+        cnt++;
     }
-    printf("GEWONNEN JUHUUUUUUUUUUUUUUU");
+    printf("GEWONNEN JUHUUUUUUUUUUUUUUU\n");
+    printf("DU hast %d Versuche gebraucht.\n",cnt);
     return 0;
 }
