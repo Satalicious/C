@@ -7,7 +7,6 @@ int main() {
     fgets(text,100,stdin);
     printf("entered: %s\n",text);
 
-
     for (int i=0; i < strlen(text)-1; i++) {
         if (text[i] == 32) {
             printf("space found\n");

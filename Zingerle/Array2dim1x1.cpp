@@ -12,7 +12,6 @@ int main()
             matrix[i][j] = (i+1) * (j+1);
             printf("%5.d", matrix[i][j]);
         }
-        //hi
     }
     return 0;
 }

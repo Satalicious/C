@@ -10,7 +10,6 @@ int main(void) {
             skalarprod += a[i][j] * b[i][j];
         }
     }
-
     printf("Ergebnis: %d\n", skalarprod);
     return 0;
 }
