@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-void main()
+int main()
 
 {
 	int limit;
@@ -19,14 +19,5 @@ void main()
 
 
 	}
-
-
-
-
-
-
-
-
-
-
+return 0;
 }

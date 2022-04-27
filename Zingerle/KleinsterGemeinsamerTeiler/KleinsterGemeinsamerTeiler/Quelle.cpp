@@ -13,18 +13,12 @@ void main()
 
 	if (z1 == z2)
 		printf("KGT ist %d", z1);
-
 	while (z1 != z2)
 	{
 		if (z1 > z2)
-		{
 			z1 -= z2;
-		}
 		else
-		{
 			z2 -= z1;
-		}
-		
 	}
 	printf("KGT ist %d\n", z1);
 

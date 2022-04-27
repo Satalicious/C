@@ -12,7 +12,7 @@ void remove_spaces(char* s) {
 
 int main() {
     //char text[] = "annna";
-    char text[] = "Die Liebe ist Sieger stets rege ist sie bei Leid";
+    char text[] = "regallager";
     int cnt = 0, textlen = strlen(text);
 
     for (int i = 0; i < textlen; i++) {
