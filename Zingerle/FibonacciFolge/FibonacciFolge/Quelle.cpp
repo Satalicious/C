@@ -7,7 +7,6 @@ int main()
 	/*1 2 3 5 8 13 21 */
 	int vvZ = 0, vZ = 1, n=0, aZ;
 
-
 	while (vZ <= 500)
 	{
 		//Berechnung

@@ -1,7 +1,7 @@
 #include <stdio.h>
-#define MAX 10 //Präprozessoranweisung: MAX wird im Main durch 10 ersetzt
+#define MAX 10 //Prï¿½prozessoranweisung: MAX wird im Main durch 10 ersetzt
 
-void main()
+int main()
 {
 	int i;
 	int zahlen[MAX] = {12,34,566,1234,45,2,-76,10};		// Definition eines Feldes (Array) namens zahlen mit 10 Integer Werter
@@ -33,9 +33,9 @@ void main()
 	mittelwert = (double)sum / 10;
 
 	printf("Summe der Zahlen: %d\n", sum);
-	printf("Mittwelwert beträgt: %.2lf\n", mittelwert);
+	printf("Mittwelwert betrï¿½gt: %.2lf\n", mittelwert);
 	printf("Kleinste Zahl: %d\n", min);
-	printf("Größte Zahl: %d\n", max);
+	printf("Grï¿½ï¿½te Zahl: %d\n", max);
 	
 
 
@@ -63,8 +63,9 @@ void main()
 	mittelwert = (double)sum / 10;
 
 	printf("Summe der Zahlen: %d\n", sum);
-	printf("Mittwelwert beträgt: %.2lf\n", mittelwert);
+	printf("Mittwelwert betrï¿½gt: %.2lf\n", mittelwert);
 	printf("Index der kleinsten Zahl ist: %d, mit dem Wert: %d\n", min+1, zahlen[min]);
-	printf("Index der größten Zahl ist: %d, mit dem Wert: %d\n", max+1, zahlen[max]);
+	printf("Index der grï¿½ï¿½ten Zahl ist: %d, mit dem Wert: %d\n", max+1, zahlen[max]);
 
-	}
+	return 0;	
+}
