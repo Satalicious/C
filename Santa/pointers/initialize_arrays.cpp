@@ -33,7 +33,8 @@ void range (int* array, int count) {
 
 int main(){
     int array[] = {0,1,2,3,4,5};
-    int count = sizeof(array) / sizeof(array[0]);       // clean for INT arrays
+    int count = sizeof(array) / sizeof(array[0]);       // super for INT arrays
+    printf("sizeof: %d\n",sizeof(array[0]));
     zeroes(array,count);
     ones(array,count);
     range(array,count);

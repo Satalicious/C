@@ -9,9 +9,10 @@ void toupper2(char *array) {
     while (*array) {
         if (*array == 32)
             array++;
-        if (islower(*array))
+        if (islower(*array)) {
             *array = toupper(*array);
             array++;
+        }
     }
 }
 void to_upper(char* array) {

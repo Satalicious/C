@@ -13,7 +13,7 @@ int str_index(char str[], char sub[]);  // pos. of first occ. of sub in str | -1
 
 void str_inverse_case(char str[]){
     for (int i = 0; i < strlen(str); i++){
-        if (islower(str[i]) != 0){
+        if (!islower(str[i])){
           str[i] = toupper(str[i]);
           printf("%c",str[i]);
           } else {
@@ -54,9 +54,10 @@ int str_count(char str[], char sub[]) {
             for (int j = 0; j < strlen(sub)-1; j++) {
                 if (str[i+j] == sub[j])
                     cnt+=1;
-                if (cnt == strlen(sub)-1)
+                if (cnt == strlen(sub)-1) {
                     occ+=1;
                     cnt=0;
+                }
             }
         }
     }
@@ -87,19 +88,22 @@ bool str_is_digit(char str[]) {
 int str_index(char str[], char sub[]) {
     int index, isSubstr = 0;
     for (int i = 0; i < strlen(str)-1; i++) {
-	if (str[i] == sub[0]) {
-	    index = i;
-            for (int j = 1; j < strlen(sub)-1; j++) {
-                if (sub[j] == str[i++]) {isSubstr = 1; }
-                else {isSubstr = 0; break;}
-	    }
-	}
-	if (isSubstr == 1) {break; }	// necessary condition to stop for loop as soon as the first match occurs. Else won't return first index if there're more than one occurrence.
+        if (str[i] == sub[0]) {
+            index = i;
+                for (int j = 1; j < strlen(sub)-1; j++) {
+                    if (sub[j] == str[i++]) {isSubstr = 1; }
+                    else {isSubstr = 0; break;}
+            }
+        }
+	    if (isSubstr == 1) 
+            break;	                    // necessary condition to stop for loop as soon as the first match occurs.                                  
+                                        // else won't return first index if there're more than one occurrence.
     }
-    if (isSubstr == 0) {return -1; }
-    else {return index; }
+    if (isSubstr == 0) 
+        return -1;
+    else 
+        return index;
 }
-
 
 
 int main(){
