@@ -16,7 +16,7 @@
         char Text[100] = "Das Haus";
         for (int i = 0; i < strlen(Text); i++) {
             if (i == pos) {
-                for (int j = strlen(Text); j <= strlen(Text) -i -1; j--)
+                for (int j = strlen(Text); j >= strlen(Text) -i -1; j--)
                     Text[j] = Text[j-1]; 
             }
         }
