@@ -11,7 +11,7 @@ int main(void) {
 	printf("radians |  sine |  cosine\n ------------------------\n");
 	double sine = 0.0, cosine = 0.0, i = 0.0;
 
-	while (i <= Pi)
+	while (i < Pi)
 	{
 		sine = sin(i);
 		cosine = cos(i);

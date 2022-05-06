@@ -4,6 +4,7 @@
 #include <string.h>
 #include <conio.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 int main()
 

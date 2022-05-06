@@ -48,7 +48,7 @@ int askuser(double* resistance)
 }
 
 
-void main(void)
+int main()
 {
 	double resistance[100];
 
@@ -56,4 +56,5 @@ void main(void)
 	//double result = formula(resistance, n);
 
 	printf("Total resistance is %.2lf", formula(resistance, n));
+	return 0;
 }

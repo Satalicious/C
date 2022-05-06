@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 void str_inverse_case(char str[]);
 bool str_starts_with(char str[], char prefix[]); // Return true if str starts with prefix, otherwise false.
@@ -13,38 +14,47 @@ int str_index(char str[], char sub[]);  // pos. of first occ. of sub in str | -1
 
 void str_inverse_case(char str[]){
     for (int i = 0; i < strlen(str); i++){
-        if (!islower(str[i])){
-          str[i] = toupper(str[i]);
-          printf("%c",str[i]);
-          } else {
+        if (str[i] == 32){
+            printf("%c", str[i]);
+            i++;
+        }
+        if (islower(str[i])) {
+            str[i] = toupper(str[i]);
+            printf("%c",str[i]);
+        } else {
             str[i] = tolower(str[i]);
             printf("%c",str[i]);
-          }
-    } 
+        } 
+    }
     printf("\n");
 }
 
 bool str_starts_with(char str[], char prefix[]) {
     bool isPrefix = false;
     for (int i = 0; i < strlen(prefix); i++) {
-	if (str[i] == prefix[i]) { isPrefix = true; } 
-	else { isPrefix = false; break; }
-    }
+	    if (str[i] == prefix[i])
+            isPrefix = true;
+        else 
+            return false;
+        }
     return isPrefix;
 }
 
 bool str_ends_with(char str[], char suffix[]) {
     int cnt = 0;
-    for (int i = strlen(str)-strlen(suffix); i < strlen(str)-1; i++){
-        for (int j = 0; j < strlen(suffix)-1; j++) {
-        if (str[i] == suffix[j])
-            cnt+=1;
+    for (int i = strlen(str)-strlen(suffix); i < strlen(str); i++) {
+        if(str[i] == suffix[0]) {   
+            for (int j = 0; j < strlen(suffix); j++) {
+                if (str[i] == suffix[j]) {
+                    cnt++;
+                    i++;
+                }
+            }        
         }
     }
-    if (cnt == strlen(suffix)-1)
+    if (cnt == strlen(suffix))
         return true;
-    else
-        return false;
+    return false;
 }
 
 int str_count(char str[], char sub[]) {
@@ -86,23 +96,22 @@ bool str_is_digit(char str[]) {
 }
 
 int str_index(char str[], char sub[]) {
-    int index, isSubstr = 0;
-    for (int i = 0; i < strlen(str)-1; i++) {
-        if (str[i] == sub[0]) {
-            index = i;
-                for (int j = 1; j < strlen(sub)-1; j++) {
-                    if (sub[j] == str[i++]) {isSubstr = 1; }
-                    else {isSubstr = 0; break;}
+    int index, isSubstr = 0, cnt = 0;
+    for (int i = 0; i < strlen(str); i++) {
+        for (int j = 0; j < strlen(sub); j++) {
+            if (sub[j] == str[i+j]) {
+                cnt++;
+                index = i+1;
+                if (cnt == strlen(sub)) {
+                    isSubstr = 1;
+                    return index;
+                }
             }
+            else
+                break;
         }
-	    if (isSubstr == 1) 
-            break;	                    // necessary condition to stop for loop as soon as the first match occurs.                                  
-                                        // else won't return first index if there're more than one occurrence.
     }
-    if (isSubstr == 0) 
-        return -1;
-    else 
-        return index;
+    return -1;
 }
 
 
@@ -160,9 +169,9 @@ printf("\n=== Check if str only has digits ===\n");
   
 printf("\n=== Get the position of substring ===\n");
   char sub8[] = "nana";
-  char sub9[] = "worl";
-  printf("Hello world, substring nana: %d\n",str_index(str, sub8));  // pos. of first occ. of sub in str | -1
-  printf("Hello world, substring world: %d\n",str_index(str, sub9));
+  char sub9[] = "Worl";
+  printf("nana, expected -1 => %d\n",str_index(str, sub8));  // pos. of first occ. of sub in str | -1
+  printf("Worl, expected 7 => %d\n",str_index(str, sub9));
   
   return 0;
 }
