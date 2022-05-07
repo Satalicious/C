@@ -34,23 +34,21 @@ bool str_starts_with(char str[], char prefix[]) {
     for (int i = 0; i < strlen(prefix); i++) {
 	    if (str[i] == prefix[i])
             isPrefix = true;
-        else 
-            return false;
+        else {
+            isPrefix = false;
+            break;
         }
+    }
     return isPrefix;
 }
 
 bool str_ends_with(char str[], char suffix[]) {
     int cnt = 0;
-    for (int i = strlen(str)-strlen(suffix); i < strlen(str); i++) {
-        if(str[i] == suffix[0]) {   
-            for (int j = 0; j < strlen(suffix); j++) {
-                if (str[i] == suffix[j]) {
-                    cnt++;
-                    i++;
-                }
-            }        
-        }
+    for (int i = strlen(str)-strlen(suffix); i < strlen(str); i++) {  
+        for (int j = 0; j < strlen(suffix); j++) {
+            if (str[i+j] == suffix[j])
+                cnt++;  
+        }        
     }
     if (cnt == strlen(suffix))
         return true;
@@ -59,53 +57,48 @@ bool str_ends_with(char str[], char suffix[]) {
 
 int str_count(char str[], char sub[]) {
     int occ = 0, cnt = 0;
-    for (int i = 0; i < strlen(str)-1; i++){
+    for (int i = 0; i < strlen(str); i++){
         if (str[i] == sub[0]){
-            for (int j = 0; j < strlen(sub)-1; j++) {
+            for (int j = 0; j < strlen(sub); j++) {
                 if (str[i+j] == sub[j])
-                    cnt+=1;
-                if (cnt == strlen(sub)-1) {
-                    occ+=1;
+                    cnt++;
+                if (cnt == strlen(sub)) {
+                    occ++;
                     cnt=0;
                 }
             }
-        }
+        }  
+
     }
     return occ;
 }
 
 bool str_is_ascii(char str[]) { // true if only ASCII characters
-    for (int i = 0; i < strlen(str)-1; i++) {
+    for (int i = 0; i < strlen(str); i++) {
         if (str[i] < 0 || str[i] > 127)
             return false;
     }
     return true;
 }
 
-
 bool str_is_digit(char str[]) {
     int count = 0;
-    for (int i = 0; i < strlen(str)-1; i++) {
-        if (str[i] <= 57 && str[i] >= 48)
-            count+=1;
+    for (int i = 0; i < strlen(str); i++) {
+        if (str[i] > 57 || str[i] < 48)
+            return false;
     }
-    if (count == strlen(str)-1)
-        return true;
-    else
-        return false;
+    return true;
 }
 
 int str_index(char str[], char sub[]) {
-    int index, isSubstr = 0, cnt = 0;
+    int index, cnt = 0;
     for (int i = 0; i < strlen(str); i++) {
         for (int j = 0; j < strlen(sub); j++) {
             if (sub[j] == str[i+j]) {
                 cnt++;
                 index = i+1;
-                if (cnt == strlen(sub)) {
-                    isSubstr = 1;
+                if (cnt == strlen(sub))
                     return index;
-                }
             }
             else
                 break;
@@ -114,64 +107,45 @@ int str_index(char str[], char sub[]) {
     return -1;
 }
 
-
 int main(){
 printf("=== Inverting case in a string ===\n");
-    char strprobe[] = "Hello World";
-    str_inverse_case(strprobe);
+    char str_inv[] = "Hello World";
+    str_inverse_case(str_inv);
   
 printf("\n=== Checking string's prefix ===\n");
     char str[] = "Hello World";
-	char sub1[] = "Hello";
-    char sub2[] = "nHello";
-	bool res = str_starts_with(str, sub1);
-    bool res1 = str_starts_with(str, sub2);
-	if (res) printf("true\n");
-	else printf("false\n");
-	if (res1) printf("true\n");
-	else printf("false\n");	
+	char pre[] = "Hello";
+    char not_pre[] = "nHello";
+	fputs(str_starts_with(str, pre) ? "true\n" : "false", stdout);
+    fputs(str_starts_with(str, not_pre) ? "true" : "false\n", stdout);
 
 printf("\n=== Checking string's suffix ===\n");
-  char suffix1[] = " World";
-  char suffix2[] = "Hello";
-  bool res2 = str_ends_with(str, suffix1);
-  bool res3 = str_ends_with(str, suffix2);
-  if (res2) printf("true\n");
-  else printf("false\n");
-  if (res3) printf("true\n");
-  else printf("false\n");
+  char ends_w[] = " World";
+  char ends_not[] = "Hello";
+  fputs(str_ends_with(str, ends_w) ? "true\n" : "false", stdout);
+  fputs(str_ends_with(str, ends_not) ? "true" : "false\n", stdout);
 
 printf("\n=== Counting string's occurences ===\n");
-  char sub3[] = "el";
-  char sub4[] = "qx";
-  printf("Occurences: %d\n",str_count(str, sub3));  // number of occurences of sub in text
-  printf("Occurences: %d\n",str_count(str, sub4));
+  char count1[] = "el";
+  char count2[] = "qx";
+  printf("Occurences: %d\n",str_count(str, count1));
+  printf("Occurences: %d\n",str_count(str, count2));
 
-printf("\n=== Check if str is ASCII ===\n");              // NEEEEEEEEEEEEEEEEDS FIX
-  char sub5[] = "Hello there";
-  char no_ascii[] = "¢";
-  bool res4 = str_is_ascii(sub5);
-  bool res5 = str_is_ascii(no_ascii);  // true if string only has ascii chars
-  if (res4) printf("true\n");
-  else printf("false\n");
-  if (res5) printf("true\n");
-  else printf("false\n");
+printf("\n=== Check if str is ASCII ===\n");
+  char not_ascii[] = "日本人中國的’éè∞¥₤€";
+  fputs(str_is_ascii(str) ? "true\n" : "false", stdout);
+  fputs(str_is_ascii(not_ascii) ? "true" : "false\n", stdout);
 
 printf("\n=== Check if str only has digits ===\n");
-  char sub6[] = "213454509";
-  char sub7[] = "Hello there";
-  bool res6 = str_is_digit(sub6);  // true if string only has digits
-  bool res7 = str_is_digit(sub7);
-  if (res6) printf("true\n");
-  else printf("false\n");
-  if (res7) printf("true\n");
-  else printf("false\n");
+  char is_digit[] = "213454509";
+  fputs(str_is_digit(is_digit) ? "true\n" : "false", stdout);
+  fputs(str_is_digit(str) ? "true" : "false\n", stdout);
   
 printf("\n=== Get the position of substring ===\n");
   char sub8[] = "nana";
   char sub9[] = "Worl";
-  printf("nana, expected -1 => %d\n",str_index(str, sub8));  // pos. of first occ. of sub in str | -1
-  printf("Worl, expected 7 => %d\n",str_index(str, sub9));
+  printf("nana, expected: -1 => %d\n",str_index(str, sub8));
+  printf("Worl, expected: 7 => %d\n",str_index(str, sub9));
   
   return 0;
 }
